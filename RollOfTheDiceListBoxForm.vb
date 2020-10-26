@@ -24,9 +24,9 @@ Public Class RollOfTheDiceListBoxForm
 
 
 
-        Do Until userInput = "q"
 
-            Randomize()
+
+        Randomize()
 
 
             For i = 0 To 1000
@@ -47,52 +47,70 @@ Public Class RollOfTheDiceListBoxForm
 
             Next
 
-            'This part of the code formats the code so that it is easy to understand by the user. 
-            For i = 2 To 12
-                Text = Text & String.Format($"{i} |{vbTab}")
-            Next
-            RollTheDiceBox.Items.Add("Numbers:        " & Text)
-            dashLines = (StrDup(177, "-"))
-            RollTheDiceBox.Items.Add(dashLines)
+        'This part of the code formats the code so that it is easy to understand by the user. 
+        For i = 2 To 12
+            Text = Text & String.Format($"{i} |{vbTab}")
+        Next
+
+        RollTheDiceBox.Items.Add("Numbers:          " & Text)
+
+        dashLines = (StrDup(177, "-"))
+        RollTheDiceBox.Items.Add(dashLines)
+
+
 
             For i = 0 To 10
-                Text2 = (Text2 & String.Format($"{0,10}", i) & "|")
-            Next
+            Text2 = (Text2 & String.Format($"{diceArray(i)} |{vbTab}"))
+        Next
 
-            RollTheDiceBox.Items.Add("TimesRolled" & Text2)
-            RollTheDiceBox.Items.Add(dashLines)
-            RollTheDiceBox.Items.Add("")
-            RollTheDiceBox.Items.Add("")
-
-
-
-            'For i = 0 To 10
-            '    dashLines = ("--------")
-            'Next
+        RollTheDiceBox.Items.Add("TimesRolled      " & Text2)
+        RollTheDiceBox.Items.Add(dashLines)
+        RollTheDiceBox.Items.Add("")
+        RollTheDiceBox.Items.Add("")
 
 
-            'For i = 0 To 10
-            '    'Console.Write(i)
-            '    Text2 = String.Format($"{diceArray(i)} |{vbTab}")
 
-            'Next
 
-            'RollTheDiceBox.Items.Add("Times Rolled:" & Text2)
-            'RollTheDiceBox.Items.Add(dashLines)
-            'RollTheDiceBox.Items.Add("")
-            'RollTheDiceBox.Items.Add("")
 
-            'Console.Clear()
-            ''This part clears the array to all 0's so that the ranomizer can load another 1000
-            'For intI = 0 To 12
-            '    diceArray(intI) = 0
-            'Next
+        'For i = 0 To 10
+        '    'Console.Write(i)
+        '    Text2 = String.Format($"{diceArray(i)} |{vbTab}")
 
-        Loop
+        'Next
+
+        'RollTheDiceBox.Items.Add("Times Rolled:" & Text2)
+        'RollTheDiceBox.Items.Add(dashLines)
+        'RollTheDiceBox.Items.Add("")
+        'RollTheDiceBox.Items.Add("")
+
+        'Console.Clear()
+        ''This part clears the array to all 0's so that the ranomizer can load another 1000
+        'For intI = 0 To 12
+        '    diceArray(intI) = 0
+        'Next
+
+
 
     End Sub
 
     Private Sub RollButton_Click(sender As Object, e As EventArgs) Handles RollButton.Click
         RollTheDice()
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        RollTheDiceBox.Items.Clear()
+    End Sub
+
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
+        Me.Close()
+    End Sub
+
+    Private Sub RollToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RollToolStripMenuItem.Click
+        RollTheDice()
+    End Sub
+
+    Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
+        RollTheDiceBox.Items.Clear()
+
     End Sub
 End Class
