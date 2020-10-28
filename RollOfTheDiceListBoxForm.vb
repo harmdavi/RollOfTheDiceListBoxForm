@@ -49,7 +49,7 @@ Public Class RollOfTheDiceListBoxForm
 
         'This part of the code formats the code so that it is easy to understand by the user. 
         'Text and text2 needed to become variables so that they could be loaded into the list box.
-        'When it was just a conslole app we were able to just write it to the console. 
+        'When it was just a conslole app we were able to just write it to the console.  
         For i = 2 To 12
             Text = Text & String.Format($"{i} |{vbTab}")
         Next
